@@ -84,6 +84,7 @@ struct FstabEntry {
         bool first_stage_mount : 1;
         bool slot_select_other : 1;
         bool fs_verity : 1;
+        bool wrapped_key : 1;
     } fs_mgr_flags = {};
 
     bool is_encryptable() const {
@@ -102,6 +103,7 @@ bool ReadDefaultFstab(Fstab* fstab);
 bool SkipMountingPartitions(Fstab* fstab);
 
 FstabEntry* GetEntryForMountPoint(Fstab* fstab, const std::string& path);
+FstabEntry* GetEntryForMountPointTryDetectFs(Fstab* fstab, const std::string& path);
 
 // Helper method to build a GSI fstab entry for mounting /system.
 FstabEntry BuildGsiSystemFstabEntry();

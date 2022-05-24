@@ -131,7 +131,16 @@ cc_defaults {
         "libbase",
         "libcrypto",
         "libfec",
+        "libprocessgroup",
+        "libselinux",
     ],
+    product_variables: {
+        debuggable: {
+            cflags: [
+                "-DRUN_BACKUPTOOL",
+            ],
+        },
+    },
 }
 
 cc_library_static {
